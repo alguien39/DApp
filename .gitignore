@@ -1,0 +1,13 @@
+node_modules
+.env
+.vercel
+
+# Hardhat
+/cache
+/artifacts
+/coverage
+/coverage.json
+/typechain-types
+
+# Despliegues en la red local (cambian cada vez que reinicias el nodo)
+deployments/localhost.json

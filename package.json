@@ -1,0 +1,27 @@
+{
+  "name": "boletotec",
+  "version": "1.0.0",
+  "description": "BoletoTEC: boletera descentralizada con NFTs (proyecto de ejemplo, Parcial 3)",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "seed:local": "hardhat run scripts/seed.js --network localhost",
+    "seed:sepolia": "hardhat run scripts/seed.js --network sepolia",
+    "verify:sepolia": "node scripts/verify.js",
+    "web": "node scripts/serve-web.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.2",
+    "hardhat": "^2.29.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1",
+    "dotenv": "^16.6.1"
+  }
+}

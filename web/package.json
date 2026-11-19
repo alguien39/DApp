@@ -1,0 +1,9 @@
+{
+  "name": "boletotec-web",
+  "private": true,
+  "description": "Sitio de BoletoTEC para Vercel (Root Directory = web). Solo la funcion api/upload.js usa dependencias.",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "ethers": "6.17.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "deployer": "0x98F26D83Ff09201131a98BfEC31ADe2755B2dD14",
+  "deployBlock": 12168703,
+  "addresses": {
+    "Boletera": "0x25980D6b883Ba8B3c23846B3a765cC54ec587a2a",
+    "TicketNFT": "0x5a225e2cE3912305cC6cFa59A12f32137FB4Af8a",
+    "MultiSignWallet": "0x68eF5cC20DAF343B611a5023bCcb49d48f172233"
+  },
+  "args": {
+    "Boletera": [
+      "0x5a225e2cE3912305cC6cFa59A12f32137FB4Af8a",
+      "0x68eF5cC20DAF343B611a5023bCcb49d48f172233",
+      5
+    ],
+    "TicketNFT": [],
+    "MultiSignWallet": [
+      [
+        "0x98F26D83Ff09201131a98BfEC31ADe2755B2dD14"
+      ],
+      1,
+      [
+        "0x98F26D83Ff09201131a98BfEC31ADe2755B2dD14"
+      ],
+      [
+        100
+      ],
+      0
+    ]
+  }
+}

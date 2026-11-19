@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BoletoTEC</title>
+  <meta name="description" content="Boletera descentralizada con NFTs en Sepolia" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎟️</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">🎟️ <b>BoletoTEC</b></div>
+    <div class="wallet">
+      <span id="red" class="pill"></span>
+      <button id="btnConectar" class="btn primary">Conectar MetaMask</button>
+      <span id="cuenta" class="pill hidden"></span>
+    </div>
+  </header>
+
+  <div id="aviso" class="aviso hidden"></div>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="cartelera" class="active">Cartelera</button>
+    <button data-tab="boletos">Mis boletos</button>
+    <button data-tab="reventa">Reventa</button>
+    <button data-tab="staff" class="hidden">Check-in</button>
+    <button data-tab="admin" class="hidden">Administrar</button>
+    <button data-tab="historial">Historial</button>
+  </nav>
+
+  <main>
+    <section id="cartelera" class="tab active">
+      <div id="listaEventos" class="grid"></div>
+    </section>
+
+    <section id="boletos" class="tab">
+      <div id="saldo" class="card hidden"></div>
+      <div id="listaBoletos" class="grid"></div>
+    </section>
+
+    <section id="reventa" class="tab">
+      <p class="muted">Boletos que otras personas venden. El precio nunca pasa del tope que fijó el organizador.</p>
+      <div id="listaReventa" class="grid"></div>
+    </section>
+
+    <section id="staff" class="tab">
+      <div class="card">
+        <h3>Validar entrada</h3>
+        <p class="muted">Se puede validar desde 6 horas antes del inicio hasta 12 horas después.</p>
+        <form id="formCheckin" class="row">
+          <input name="tokenId" type="number" min="1" placeholder="Número de boleto" required />
+          <button class="btn" type="button" id="btnRevisar">Revisar</button>
+          <button class="btn primary">Validar entrada</button>
+        </form>
+        <div id="infoBoleto"></div>
+      </div>
+    </section>
+
+    <section id="admin" class="tab">
+      <div class="card">
+        <h3>Crear evento</h3>
+        <form id="formEvento" class="form">
+          <label>Nombre<input name="nombre" required maxlength="60" placeholder="Concierto de bienvenida" /></label>
+          <label>Fecha y hora de inicio<input name="fecha" type="datetime-local" required /></label>
+          <div class="row">
+            <label>Precio (ETH)<input name="precio" type="number" step="0.0001" min="0.0001" value="0.001" required /></label>
+            <label>Cupo<input name="cupo" type="number" min="1" value="50" required /></label>
+            <label>Tope de reventa (%)<input name="tope" type="number" min="100" max="200" value="120" required /></label>
+          </div>
+          <label>Descripción<textarea name="descripcion" rows="2" maxlength="300" placeholder="Auditorio principal"></textarea></label>
+          <label>Imagen (opcional, se sube a IPFS)<input name="imagen" type="file" accept="image/*" /></label>
+          <button class="btn primary">Crear evento</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Staff</h3>
+        <form id="formStaff" class="row">
+          <input name="cuenta" placeholder="0x... cuenta del staff" required />
+          <button class="btn primary" data-valor="true">Agregar</button>
+          <button class="btn" data-valor="false">Quitar</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Eventos y tesorería</h3>
+        <div id="tesoreria" class="muted"></div>
+        <div id="adminEventos"></div>
+      </div>
+    </section>
+
+    <section id="historial" class="tab">
+      <div class="row between">
+        <p class="muted">Eventos emitidos por el contrato Boletera (se leen directo de la blockchain).</p>
+        <label class="check"><input type="checkbox" id="soloMios" /> Solo los míos</label>
+      </div>
+      <div id="listaHistorial"></div>
+    </section>
+  </main>
+
+  <footer class="pie" id="pie"></footer>
+  <div id="toasts"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js"></script>
+  <script src="contracts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
